@@ -762,6 +762,7 @@
       "type": "timeseries"
     }
   ],
+  "refresh": "1m",
   "schemaVersion": 36,
   "style": "dark",
   "tags": [],
@@ -776,6 +777,6 @@
   "timezone": "",
   "title": "StatusCode",
   "uid": "bmsyJNzVk",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }

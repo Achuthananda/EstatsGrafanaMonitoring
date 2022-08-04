@@ -2,7 +2,7 @@
 #https://trstringer.com/quick-and-easy-prometheus-exporter/
 #https://medium.com/aeturnuminc/configure-prometheus-and-grafana-in-dockers-ff2a2b51aa1d
 '''
-docker run -d --name prometheus -p 9090:9090 -v /Users/apadmana/Achuth/code_base/AkamaiInteralGit/CustomerCode/India/Eterno/GrafanaPOC/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
+docker run -d --name prometheus -p 9090:9090 -v /Users/apadmana/Achuth/code_base/AkamaiInteralGit/CustomerCode/India/GrafanaPOC/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
 docker run -d --name grafana -p 3000:3000 grafana/grafana
 '''
 
