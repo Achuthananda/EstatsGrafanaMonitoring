@@ -67,7 +67,7 @@ ec7cd6b921d8fe4e794ce18492c4f80caa54c62a114f66d744ab1b204cd62e4a
 ```
 
 - Login to Grafana at http://localhost:3000/config
-![Screenshot](images/grafanlogin.png)
+![Screenshot](images/grafanalogin.png)
 
 - Homepage
 ![Screenshot](images/grafanahome.png)
