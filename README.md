@@ -36,6 +36,11 @@ accountSwitchKey = B-C-1IE2OH8:1-2RBL
 If you are an Akamai customer then you can leave accountSwitchKey as blank. Rest everything needs to be filled up as per your need.
 polling_interval denotes the frequency of pulling the data from Akamai estats.
 
+### Install the dependencies
+```
+[~/GrafanaPOC]$:pip install -r requirements.txt
+```
+
 
 ### Run the Exporter
 ```
