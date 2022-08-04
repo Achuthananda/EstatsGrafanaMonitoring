@@ -14,13 +14,19 @@ from prometheus_client import start_http_server, Gauge, Enum
 import requests
 import random,json
 import configparser
+from akamaihttp import AkamaiHTTPHandler
+
+config = configparser.ConfigParser()
+import os
+cwd = os.path.dirname(os.path.abspath(__file__))
+initfile = os.path.join(cwd, 'exportersettings')
 
 
 config = configparser.ConfigParser()
-config.read('exportersettings')
+config.read(initfile)
 
 def geteStatsData():
-    from akamaihttp import AkamaiHTTPHandler
+
     akhttp = AkamaiHTTPHandler(config['Akamai']['edgerclocation'])
 
     data = {}
@@ -28,11 +34,12 @@ def geteStatsData():
     data['delivery'] = config['Akamai']['deliverynetwork']
     json_data = json.dumps(data)
 
+
     ep = '/edge-diagnostics/v1/estats'
     params = {}
     if config['Akamai']['accountSwitchKey'] != '':
         params['accountSwitchKey'] = config['Akamai']['accountSwitchKey']
-
+    
     headers = {'Content-Type': 'application/json','Accept':'application/json'}
 
     result = akhttp.postResult(ep,json_data,headers,params)
@@ -138,12 +145,12 @@ class AppMetrics:
 
 def main():
     """Main entry point"""
-
-    polling_interval_seconds = config['Exporter']['polling_interval']
-    exporter_port = config['Exporter']['exporter_port']
+    polling_interval_seconds = int( config.get('Exporter', 'polling_interval'))
+    exporter_port = int( config.get('Exporter', 'exporter_port') )
 
     app_metrics = AppMetrics(polling_interval_seconds=polling_interval_seconds)
     start_http_server(exporter_port)
+    print('HTTP Exporter Server is Running on Port {}'.format(exporter_port))
     app_metrics.run_metrics_loop()
 
 if __name__ == "__main__":
